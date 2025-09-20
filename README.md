@@ -11,15 +11,15 @@
 - 🌐 [LinkedIn](https://linkedin.com/in/adamlovell)  
 - 🧠 [OmniForge](https://yourfutureurl.com)  
 - 📧 Email: adam_lovell@student.uml.edu  
-- 📱 Cell: (617) XXX-XXXX
+- 📱 Cell: (770) 877-2501
 
 ---
 
 ## 🧰 Tech Stack
 
 **Languages:** HTML, CSS, JavaScript  
-**Learning:** React, Git, Node.js  
-**Tools:** VS Code, GitHub, Notion, ChatGPT, Figma, Copilot
+**Learning:** React, Git, Node.js, Figma
+**Tools:** VS Code, GitHub, Notion, ChatGPT, Copilot
 
 ---
 

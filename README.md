@@ -2,7 +2,6 @@
 
 🚀 Program Manager & BAS Instructor @ Roxbury Community College  
 💻 Aspiring Full-Stack Developer | Passionate about Web & Mobile Apps  
-🛠️ Founder of [OmniForge](#) – Tools for Human Optimization  
 📍 Based in Arlington, MA | B.S. in IT @ UMass Lowell (’27)
 
 ---

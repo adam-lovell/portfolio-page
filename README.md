@@ -8,8 +8,7 @@
 
 ## 🔗 Connect with Me
 
-- 🌐 [LinkedIn](https://linkedin.com/in/adamlovell)  
-- 🧠 [OmniForge](https://yourfutureurl.com)  
+- 🌐 [LinkedIn]((https://www.linkedin.com/in/adam-lovell-076503161/))   
 - 📧 Email: adam_lovell@student.uml.edu  
 - 📱 Cell: (770) 877-2501
 

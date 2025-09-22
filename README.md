@@ -8,7 +8,7 @@
 
 ## 🔗 Connect with Me
 
-- 🌐 [LinkedIn]((https://www.linkedin.com/in/adam-lovell-076503161/))   
+- 🌐 [LinkedIn](https://www.linkedin.com/in/adam-lovell-076503161/)   
 - 📧 Email: adam_lovell@student.uml.edu  
 - 📱 Cell: (770) 877-2501
 
@@ -27,10 +27,4 @@
 By day, I teach HVAC/BAS systems to future techs.  
 By night, I’m learning full-stack dev and building tools that help people optimize their lives.
 
----
-
-## 📄 Resumé
-
-👉 [View Online Resume](https://your-resume-page-link)  
-📥 [Download PDF](https://github.com/yourrepo/blob/main/resume.pdf)
 

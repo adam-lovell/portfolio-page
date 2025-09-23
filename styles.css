@@ -1,1 +1,1334 @@
+/*===== GOOGLE FONTS =====*/
 
+/* Import Inter font from Google Fonts for modern, clean typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/*===== CSS VARIABLES =====*/
+/* Define CSS custom properties for consistent colors and values throughout the site */
+:root {
+  /* Header height for consistent spacing calculations */
+  --header-height: 3rem;
+
+  /*========== Colors ==========*/
+  /* Professional color palette with primary blue theme */
+  --first-color: #3B82F6; /* Primary blue for accents and buttons */
+  --first-color-alt: #2563EB; /* Darker blue for hover states */
+  --first-color-light: #DBEAFE; /* Light blue for backgrounds */
+  --first-color-lighten: #EFF6FF; /* Very light blue for subtle backgrounds */
+  
+  /* Text colors with good contrast ratios for accessibility */
+  --title-color: #1F2937; /* Dark gray for headings */
+  --text-color: #4B5563; /* Medium gray for body text */
+  --text-color-light: #6B7280; /* Light gray for secondary text */
+  
+  /* Background and UI element colors */
+  --body-color: #FFFFFF; /* White background */
+  --container-color: #F9FAFB; /* Very light gray for containers */
+  --input-color: #F3F4F6; /* Light gray for form inputs */
+  --card-color: #FFFFFF; /* White for cards */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Semi-transparent shadow */
+
+  /*========== Font and typography ==========*/
+  /* Typography scale using Inter font family */
+  --body-font: 'Inter', sans-serif;
+  
+  /* Font sizes using rem units for scalability */
+  --biggest-font-size: 2.5rem; /* For main headings */
+  --h1-font-size: 2rem; /* For section titles */
+  --h2-font-size: 1.5rem; /* For subsection titles */
+  --h3-font-size: 1.25rem; /* For smaller headings */
+  --normal-font-size: 1rem; /* For body text */
+  --small-font-size: 0.875rem; /* For captions and labels */
+  --smaller-font-size: 0.75rem; /* For very small text */
+
+  /*========== Font weight ==========*/
+  /* Font weights for visual hierarchy */
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== Margins Bottom ==========*/
+  /* Consistent margin bottom values for spacing */
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+  /*========== z index ==========*/
+  /* Z-index values for layering elements */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+
+  /*========== Transitions ==========*/
+  /* Consistent transition timing for smooth animations */
+  --transition: 0.3s ease-in-out;
+}
+
+/* Responsive font sizes for mobile devices */
+@media screen and (max-width: 992px) {
+  :root {
+    /* Smaller font sizes for mobile to improve readability */
+    --biggest-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+  }
+}
+
+/*===== BASE STYLES =====*/
+/* Box-sizing border-box for all elements - includes padding and border in width calculations */
+* {
+  box-sizing: border-box;
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+/* Base HTML styles for consistent rendering */
+html {
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+  font-size: 16px; /* Base font size for rem calculations */
+}
+
+/* Body styles - the foundation of the page */
+body {
+  margin: 0; /* Remove default margin */
+  font-family: var(--body-font); /* Use Inter font */
+  font-size: var(--normal-font-size); /* Base font size */
+  font-weight: var(--font-regular); /* Regular font weight */
+  background-color: var(--body-color); /* White background */
+  color: var(--text-color); /* Medium gray text */
+  line-height: 1.6; /* Comfortable line height for readability */
+}
+
+/* Heading styles with consistent typography */
+h1, h2, h3, h4 {
+  color: var(--title-color); /* Dark gray for headings */
+  font-weight: var(--font-semi-bold); /* Semi-bold weight */
+  margin-bottom: var(--mb-1); /* Consistent bottom margin */
+}
+
+/* Remove default list styles */
+ul {
+  list-style: none; /* Remove bullet points */
+}
+
+/* Remove default link underlines and set color */
+a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent */
+  transition: var(--transition); /* Smooth color transitions */
+}
+
+/* Responsive image styles */
+img {
+  max-width: 100%; /* Never exceed container width */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove inline spacing */
+}
+
+/* Button reset styles */
+button {
+  cursor: pointer; /* Pointer cursor on hover */
+  border: none; /* Remove default border */
+  outline: none; /* Remove focus outline */
+  background: transparent; /* Transparent background */
+  font-family: inherit; /* Inherit font family */
+}
+
+/*===== REUSABLE CSS CLASSES =====*/
+/* Container class for consistent max-width and centering */
+.container {
+  max-width: 1200px; /* Maximum width for large screens */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+  padding-left: 1rem; /* Left padding for mobile */
+  padding-right: 1rem; /* Right padding for mobile */
+}
+
+/* Grid layout class for consistent spacing */
+.grid {
+  display: grid; /* CSS Grid layout */
+  gap: 1.5rem; /* Space between grid items */
+}
+
+/* Section spacing class */
+.section {
+  padding: 4rem 0 2rem; /* Top and bottom padding for sections */
+}
+
+/* Section title styling */
+.section__title {
+  font-size: var(--h1-font-size); /* Large font size */
+  color: var(--title-color); /* Dark gray color */
+  text-align: center; /* Center alignment */
+  margin-bottom: var(--mb-0-5); /* Small bottom margin */
+}
+
+/* Section subtitle styling */
+.section__subtitle {
+  display: block; /* Block display */
+  font-size: var(--small-font-size); /* Smaller font size */
+  color: var(--text-color-light); /* Light gray color */
+  text-align: center; /* Center alignment */
+  margin-bottom: var(--mb-3); /* Large bottom margin */
+}
+
+/* Primary button styling with gradient background */
+.button {
+  display: inline-block; /* Inline-block for proper sizing */
+  background: linear-gradient(135deg, var(--first-color), var(--first-color-alt)); /* Gradient background */
+  color: #FFFFFF; /* White text */
+  padding: 1rem 2rem; /* Comfortable padding */
+  border-radius: 0.5rem; /* Rounded corners */
+  font-weight: var(--font-medium); /* Medium font weight */
+  font-size: var(--normal-font-size); /* Normal font size */
+  transition: var(--transition); /* Smooth transitions */
+  text-align: center; /* Center text */
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); /* Blue shadow */
+}
+
+/* Button hover effect */
+.button:hover {
+  background: linear-gradient(135deg, var(--first-color-alt), #1D4ED8); /* Darker gradient on hover */
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); /* Stronger shadow on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Button icon spacing */
+.button i {
+  margin-left: var(--mb-0-5); /* Space between text and icon */
+  transition: var(--transition); /* Smooth icon transitions */
+}
+
+/*===== HEADER & NAV =====*/
+/* Fixed header at the top of the page */
+.header {
+  width: 100%; /* Full width */
+  position: fixed; /* Fixed positioning */
+  top: 0; /* Stick to top */
+  left: 0; /* Align to left */
+  z-index: var(--z-fixed); /* High z-index to stay on top */
+  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+  backdrop-filter: blur(10px); /* Modern blur effect */
+  transition: var(--transition); /* Smooth background transitions */
+  border-bottom: 1px solid rgba(229, 231, 235, 0.5); /* Subtle bottom border */
+}
+
+/* Header background when scrolled */
+.scroll-header {
+  background-color: var(--body-color); /* Solid white background */
+  box-shadow: 0 1px 4px var(--shadow-color); /* Shadow when scrolled */
+}
+
+/* Navigation container */
+.nav {
+  height: var(--header-height); /* Set height using CSS variable */
+  display: flex; /* Flexbox layout */
+  justify-content: space-between; /* Space between logo and menu */
+  align-items: center; /* Vertically center items */
+  max-width: 1200px; /* Maximum width for large screens */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+  padding-left: 1rem; /* Left padding */
+  padding-right: 1rem; /* Right padding */
+}
+
+/* Logo/brand styling */
+.nav__logo {
+  font-weight: var(--font-bold); /* Bold font weight */
+  font-size: var(--h3-font-size); /* Larger font size */
+  color: var(--title-color); /* Dark gray color */
+}
+
+/* Logo hover effect */
+.nav__logo:hover {
+  color: var(--first-color); /* Blue color on hover */
+}
+
+/* Desktop navigation menu */
+.nav__menu {
+  display: flex; /* Flexbox for horizontal layout */
+  align-items: center; /* Vertically center */
+  gap: 2rem; /* Space between menu items */
+}
+
+/* Navigation links */
+.nav__link {
+  color: var(--text-color); /* Medium gray color */
+  font-weight: var(--font-medium); /* Medium font weight */
+  font-size: var(--small-font-size); /* Small font size */
+  padding: 0.5rem 0; /* Vertical padding for click area */
+  position: relative; /* For pseudo-element positioning */
+  transition: var(--transition); /* Smooth color transitions */
+}
+
+/* Navigation link hover effect */
+.nav__link:hover {
+  color: var(--first-color); /* Blue color on hover */
+}
+
+/* Active navigation link styling */
+.active-link {
+  color: var(--first-color) !important; /* Blue color for active link */
+}
+
+/* Active link underline effect */
+.active-link::after {
+  content: ''; /* Empty pseudo-element */
+  position: absolute; /* Absolute positioning */
+  bottom: -2px; /* Position below text */
+  left: 0; /* Align to left */
+  width: 100%; /* Full width */
+  height: 2px; /* Thin line */
+  background-color: var(--first-color); /* Blue background */
+  border-radius: 2px; /* Rounded ends */
+}
+
+/* Special styling for Resume/CTA link */
+.nav__cta {
+  background-color: var(--first-color); /* Blue background */
+  color: #FFFFFF !important; /* White text */
+  padding: 0.5rem 1rem; /* Padding for button appearance */
+  border-radius: 0.25rem; /* Rounded corners */
+  font-size: var(--smaller-font-size); /* Smaller font size */
+}
+
+/* CTA link hover effect */
+.nav__cta:hover {
+  background-color: var(--first-color-alt); /* Darker blue on hover */
+  transform: translateY(-1px); /* Slight lift effect */
+}
+
+/* Mobile menu toggle button - hidden on desktop */
+.nav__toggle {
+  display: none; /* Hidden by default */
+  font-size: 1.1rem; /* Larger icon size */
+  cursor: pointer; /* Pointer cursor */
+  color: var(--title-color); /* Dark gray color */
+}
+
+/*===== HOME =====*/
+/* Hero/home section styling */
+.home {
+  background: linear-gradient(135deg, var(--first-color-lighten) 0%, #FFFFFF 100%); /* Subtle gradient background */
+  padding-top: calc(var(--header-height) + 4rem); /* Account for fixed header */
+  padding-bottom: 4rem; /* Bottom padding */
+  min-height: 100vh; /* Full viewport height */
+  display: flex; /* Flexbox for centering */
+  align-items: center; /* Vertically center content */
+}
+
+/* Home container with grid layout */
+.home__container {
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  align-items: center; /* Vertically align grid items */
+  gap: 3rem; /* Space between columns */
+}
+
+/* Home content column */
+.home__content {
+  padding-right: 2rem; /* Right padding for spacing */
+}
+
+/* Main title styling */
+.home__title {
+  font-size: var(--biggest-font-size); /* Largest font size */
+  color: var(--title-color); /* Dark gray color */
+  margin-bottom: var(--mb-1); /* Bottom margin */
+  line-height: 1.2; /* Tighter line height for titles */
+  font-weight: var(--font-bold); /* Bold font weight */
+}
+
+/* Highlighted name in title */
+.home__title-color {
+  color: var(--first-color); /* Blue color for name */
+}
+
+/* Subtitle below main title */
+.home__subtitle {
+  font-size: var(--h2-font-size); /* H2 size */
+  color: var(--text-color); /* Medium gray */
+  margin-bottom: var(--mb-1-5); /* Bottom margin */
+  font-weight: var(--font-medium); /* Medium weight */
+}
+
+/* Description paragraph */
+.home__description {
+  color: var(--text-color); /* Medium gray */
+  margin-bottom: var(--mb-2-5); /* Large bottom margin */
+  line-height: 1.7; /* Comfortable reading line height */
+  font-size: var(--normal-font-size); /* Normal font size */
+}
+
+/* Social media links container */
+.home__social {
+  display: flex; /* Flexbox for horizontal layout */
+  align-items: center; /* Vertically center */
+  gap: 1.5rem; /* Space between icons */
+  margin-bottom: var(--mb-2-5); /* Bottom margin */
+}
+
+/* Individual social media icon links */
+.home__social-icon {
+  display: inline-flex; /* Inline flex for proper sizing */
+  align-items: center; /* Center icon */
+  justify-content: center; /* Center icon */
+  width: 3rem; /* Fixed width */
+  height: 3rem; /* Fixed height (square) */
+  background-color: var(--card-color); /* White background */
+  color: var(--text-color); /* Medium gray icon */
+  border-radius: 50%; /* Circular shape */
+  font-size: 1.25rem; /* Larger icon size */
+  transition: var(--transition); /* Smooth transitions */
+  box-shadow: 0 2px 8px var(--shadow-color); /* Subtle shadow */
+}
+
+/* Social icon hover effect */
+.home__social-icon:hover {
+  background-color: var(--first-color); /* Blue background on hover */
+  color: #FFFFFF; /* White icon on hover */
+  transform: translateY(-3px); /* Lift effect */
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); /* Blue shadow */
+}
+
+/* Home button with additional margin */
+.home__button {
+  margin-top: var(--mb-1); /* Top margin */
+}
+
+/* Right column image container */
+.home__img {
+  display: flex; /* Flexbox for centering */
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  padding-left: 2rem; /* Left padding */
+}
+
+/* Video container styling */
+.home__video-container {
+  width: 100%; /* Full width */
+  max-width: 400px; /* Maximum width */
+  aspect-ratio: 16/9; /* Video aspect ratio */
+  border-radius: 1rem; /* Rounded corners */
+  overflow: hidden; /* Hide overflow */
+  box-shadow: 0 8px 32px var(--shadow-color); /* Large shadow */
+  transition: var(--transition); /* Smooth transitions */
+}
+
+/* Video container hover effect */
+.home__video-container:hover {
+  transform: translateY(-5px); /* Lift on hover */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+/* Video placeholder styling */
+.video-placeholder {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background: linear-gradient(135deg, var(--first-color-light), var(--container-color)); /* Gradient background */
+  display: flex; /* Flexbox for centering */
+  flex-direction: column; /* Vertical layout */
+  justify-content: center; /* Vertically center */
+  align-items: center; /* Horizontally center */
+  cursor: pointer; /* Pointer cursor */
+  position: relative; /* For overlay positioning */
+  transition: var(--transition); /* Smooth transitions */
+}
+
+/* Video placeholder hover effect */
+.video-placeholder:hover {
+  background: linear-gradient(135deg, var(--first-color), var(--first-color-alt)); /* Blue gradient on hover */
+}
+
+/* Video placeholder overlay */
+.video-placeholder__overlay {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Vertical layout */
+  align-items: center; /* Center horizontally */
+  gap: 1rem; /* Space between elements */
+  z-index: 2; /* Above background */
+}
+
+/* Play button icon */
+.video-placeholder__play {
+  font-size: 3rem; /* Large play icon */
+  color: var(--first-color); /* Blue color */
+  transition: var(--transition); /* Smooth transitions */
+}
+
+/* Play button hover effect */
+.video-placeholder:hover .video-placeholder__play {
+  color: #FFFFFF; /* White on hover */
+  transform: scale(1.1); /* Slightly larger */
+}
+
+/* Video placeholder text */
+.video-placeholder__text {
+  font-size: var(--small-font-size); /* Small font size */
+  color: var(--text-color); /* Medium gray */
+  font-weight: var(--font-medium); /* Medium weight */
+  text-align: center; /* Center alignment */
+  transition: var(--transition); /* Smooth transitions */
+}
+
+/* Video text hover effect */
+.video-placeholder:hover .video-placeholder__text {
+  color: #FFFFFF; /* White text on hover */
+}
+
+/* Video placeholder background image/pattern */
+.video-placeholder__image {
+  position: absolute; /* Absolute positioning */
+  top: 0; /* Top edge */
+  left: 0; /* Left edge */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  opacity: 0.1; /* Very transparent */
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233B82F6' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); /* SVG pattern background */
+}
+
+/*===== ABOUT =====*/
+/* About section styling */
+.about {
+  background-color: var(--container-color); /* Light gray background */
+}
+
+/* About section grid container */
+.about__container {
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  align-items: center; /* Vertically align items */
+  gap: 4rem; /* Large gap between columns */
+}
+
+/* About image column */
+.about__img {
+  display: flex; /* Flexbox for centering */
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+}
+
+/* About image placeholder */
+.about__img-placeholder {
+  width: 250px; /* Fixed width */
+  height: 250px; /* Fixed height (square) */
+  background: linear-gradient(135deg, var(--first-color), var(--first-color-alt)); /* Blue gradient */
+  border-radius: 50%; /* Circular shape */
+  display: flex; /* Flexbox for centering icon */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  font-size: 4rem; /* Large icon */
+  color: #FFFFFF; /* White icon */
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3); /* Blue shadow */
+  transition: var(--transition); /* Smooth transitions */
+}
+
+/* About image hover effect */
+.about__img-placeholder:hover {
+  transform: scale(1.05); /* Slightly larger on hover */
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4); /* Stronger shadow */
+}
+
+/* About data/content column */
+.about__data {
+  padding-left: 2rem; /* Left padding */
+}
+
+/* About description paragraph */
+.about__description {
+  text-align: left; /* Left alignment */
+  margin-bottom: var(--mb-2-5); /* Large bottom margin */
+  color: var(--text-color); /* Medium gray color */
+  line-height: 1.7; /* Comfortable line height */
+  font-size: var(--normal-font-size); /* Normal font size */
+}
+
+/* About info stats container */
+.about__info {
+  display: flex; /* Flexbox layout */
+  justify-content: space-between; /* Even spacing */
+  margin-bottom: var(--mb-2-5); /* Large bottom margin */
+  gap: 2rem; /* Space between items */
+}
+
+/* Individual info stat item */
+.about__info-item {
+  text-align: center; /* Center alignment */
+  background-color: var(--card-color); /* White background */
+  padding: 1.5rem 1rem; /* Padding for spacing */
+  border-radius: 0.75rem; /* Rounded corners */
+  box-shadow: 0 2px 8px var(--shadow-color); /* Subtle shadow */
+  transition: var(--transition); /* Smooth transitions */
+  flex: 1; /* Equal width distribution */
+}
+
+/* Info item hover effect */
+.about__info-item:hover {
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0 8px 25px var(--shadow-color); /* Stronger shadow */
+}
+
+/* Info item number/stat */
+.about__info-number {
+  font-size: var(--h2-font-size); /* Large font size */
+  font-weight: var(--font-bold); /* Bold weight */
+  color: var(--first-color); /* Blue color */
+  display: block; /* Block display */
+  margin-bottom: var(--mb-0-25); /* Small bottom margin */
+}
+
+/* Info item label/name */
+.about__info-name {
+  font-size: var(--smaller-font-size); /* Small font size */
+  color: var(--text-color-light); /* Light gray color */
+  font-weight: var(--font-medium); /* Medium weight */
+  line-height: 1.3; /* Tighter line height */
+}
+
+/* About button styling */
+.about__button {
+  display: inline-flex; /* Inline flex for icon alignment */
+  align-items: center; /* Vertically center content */
+  gap: var(--mb-0-5); /* Space between text and icon */
+}
+
+/*===== SKILLS =====*/
+/* Skills section background */
+.skills {
+  background-color: var(--body-color); /* White background */
+}
+
+/* Skills container grid */
+.skills__container {
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 3rem; /* Space between columns */
+}
+
+/* Individual skills content blocks */
+.skills__content {
+  background-color: var(--card-color); /* White background */
+  padding: 2rem; /* Internal padding */
+  border-radius: 1rem; /* Rounded corners */
+  box-shadow: 0 4px 16px var(--shadow-color); /* Medium shadow */
+  transition: var(--transition); /* Smooth transitions */
+}
+
+/* Skills content hover effect */
+.skills__content:hover {
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0 8px 25px var(--shadow-color); /* Stronger shadow */
+}
+
+/* Skills section title */
+.skills__title {
+  font-size: var(--h3-font-size); /* H3 font size */
+  color: var(--title-color); /* Dark gray */
+  text-align: center; /* Center alignment */
+  margin-bottom: var(--mb-1-5); /* Bottom margin */
+  font-weight: var(--font-semi-bold); /* Semi-bold weight */
+}
+
+/* Skills list container */
+.skills__list {
+  display: grid; /* Grid layout */
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 1rem; /* Space between items */
+}
+
+/* Individual skill data items */
+.skills__data {
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Vertically center */
+  gap: 0.75rem; /* Space between icon and text */
+  padding: 0.75rem; /* Internal padding */
+  background-color: var(--container-color); /* Light gray background */
+  border-radius: 0.5rem; /* Rounded corners */
+  transition: var(--transition); /* Smooth transitions */
+}
+
+/* Skill data hover effect */
+.skills__data:hover {
+  background-color: var(--first-color-light); /* Light blue background */
+  transform: translateX(5px); /* Slight right movement */
+}
+
+/* Skill data icons */
+.skills__data i {
+  font-size: 1.25rem; /* Larger icon size */
+  color: var(--first-color); /* Blue color */
+}
+
+/* Skill name text */
+.skills__name {
+  font-size: var(--small-font-size); /* Small font size */
+  color: var(--text-color); /* Medium gray */
+  font-weight: var(--font-medium); /* Medium weight */
+}
+
+/*===== PORTFOLIO =====*/
+/* Portfolio section background */
+.portfolio {
+  background-color: var(--container-color); /* Light gray background */
+}
+
+/* Portfolio container grid */
+.portfolio__container {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 2rem; /* Space between portfolio items */
+}
+
+/* Individual portfolio content cards */
+.portfolio__content {
+  background-color: var(--card-color); /* White background */
+  border-radius: 1rem; /* Rounded corners */
+  overflow: hidden; /* Hide overflow for rounded corners */
+  box-shadow: 0 4px 16px var(--shadow-color); /* Medium shadow */
+  transition: var(--transition); /* Smooth transitions */
+  cursor: pointer; /* Pointer cursor */
+}
+
+/* Portfolio content hover effect */
+.portfolio__content:hover {
+  transform: translateY(-8px); /* Lift effect */
+  box-shadow: 0 12px 35px var(--shadow-color); /* Stronger shadow */
+}
+
+/* Portfolio image container */
+.portfolio__img {
+  position: relative; /* For overlay positioning */
+  height: 200px; /* Fixed height */
+  overflow: hidden; /* Hide overflow */
+  background: linear-gradient(135deg, var(--first-color-light), var(--container-color)); /* Gradient background */
+}
+
+/* Portfolio image placeholder */
+.portfolio__img-placeholder {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  display: flex; /* Flexbox for centering */
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  font-size: 3rem; /* Large icon */
+  color: var(--first-color); /* Blue color */
+  transition: var(--transition); /* Smooth transitions */
+}
+
+/* Portfolio image hover effect */
+.portfolio__content:hover .portfolio__img-placeholder {
+  transform: scale(1.1); /* Scale up on hover */
+  color: var(--first-color-alt); /* Darker blue */
+}
+
+/* Portfolio data/content section */
+.portfolio__data {
+  padding: 1.5rem; /* Internal padding */
+}
+
+/* Portfolio project title */
+.portfolio__title {
+  font-size: var(--h3-font-size); /* H3 font size */
+  color: var(--title-color); /* Dark gray */
+  margin-bottom: var(--mb-0-75); /* Bottom margin */
+  font-weight: var(--font-semi-bold); /* Semi-bold weight */
+}
+
+/* Portfolio project description */
+.portfolio__description {
+  color: var(--text-color); /* Medium gray */
+  margin-bottom: var(--mb-1-5); /* Bottom margin */
+  line-height: 1.6; /* Comfortable line height */
+  font-size: var(--small-font-size); /* Small font size */
+}
+
+/* Portfolio links container */
+.portfolio__links {
+  display: flex; /* Flexbox layout */
+  gap: 1rem; /* Space between links */
+  flex-wrap: wrap; /* Allow wrapping */
+}
+
+/* Individual portfolio links */
+.portfolio__link {
+  display: inline-flex; /* Inline flex for icon alignment */
+  align-items: center; /* Vertically center */
+  gap: 0.5rem; /* Space between icon and text */
+  padding: 0.5rem 1rem; /* Button-like padding */
+  background-color: var(--first-color-lighten); /* Light blue background */
+  color: var(--first-color); /* Blue text */
+  border-radius: 0.375rem; /* Rounded corners */
+  font-size: var(--smaller-font-size); /* Small font size */
+  font-weight: var(--font-medium); /* Medium weight */
+  transition: var(--transition); /* Smooth transitions */
+}
+
+/* Portfolio link hover effect */
+.portfolio__link:hover {
+  background-color: var(--first-color); /* Blue background */
+  color: #FFFFFF; /* White text */
+  transform: translateY(-2px); /* Slight lift */
+}
+
+/*===== CONTACT =====*/
+/* Contact section background */
+.contact {
+  background-color: var(--body-color); /* White background */
+}
+
+/* Contact container grid */
+.contact__container {
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 4rem; /* Large gap between columns */
+  align-items: start; /* Align to top */
+}
+
+/* Contact content section */
+.contact__content {
+  padding-right: 2rem; /* Right padding */
+}
+
+/* Contact section title */
+.contact__title {
+  font-size: var(--h2-font-size); /* H2 font size */
+  color: var(--title-color); /* Dark gray */
+  margin-bottom: var(--mb-1); /* Bottom margin */
+  font-weight: var(--font-semi-bold); /* Semi-bold weight */
+}
+
+/* Contact description */
+.contact__description {
+  color: var(--text-color); /* Medium gray */
+  margin-bottom: var(--mb-2-5); /* Large bottom margin */
+  line-height: 1.7; /* Comfortable line height */
+}
+
+/* Contact information container */
+.contact__info {
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Vertical layout */
+  gap: 1.5rem; /* Space between info items */
+}
+
+/* Individual contact info items */
+.contact__info-item {
+  display: flex; /* Flexbox layout */
+  align-items: center; /* Vertically center */
+  gap: 1rem; /* Space between icon and content */
+  padding: 1rem; /* Internal padding */
+  background-color: var(--container-color); /* Light gray background */
+  border-radius: 0.75rem; /* Rounded corners */
+  transition: var(--transition); /* Smooth transitions */
+}
+
+/* Contact info item hover effect */
+.contact__info-item:hover {
+  background-color: var(--first-color-light); /* Light blue background */
+  transform: translateX(5px); /* Slight right movement */
+}
+
+/* Contact info icons */
+.contact__info-icon {
+  font-size: 1.5rem; /* Larger icon size */
+  color: var(--first-color); /* Blue color */
+}
+
+/* Contact info content container */
+.contact__info-content {
+  flex: 1; /* Take remaining space */
+}
+
+/* Contact info titles */
+.contact__info-title {
+  font-size: var(--small-font-size); /* Small font size */
+  color: var(--title-color); /* Dark gray */
+  font-weight: var(--font-medium); /* Medium weight */
+  margin-bottom: 0.25rem; /* Small bottom margin */
+}
+
+/* Contact info subtitles/values */
+.contact__info-subtitle {
+  font-size: var(--smaller-font-size); /* Smaller font size */
+  color: var(--text-color-light); /* Light gray */
+}
+
+/* Contact form styling */
+.contact__form {
+  background-color: var(--card-color); /* White background */
+  padding: 2rem; /* Internal padding */
+  border-radius: 1rem; /* Rounded corners */
+  box-shadow: 0 4px 16px var(--shadow-color); /* Medium shadow */
+}
+
+/* Contact form inputs grid */
+.contact__inputs {
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 1rem; /* Space between inputs */
+  margin-bottom: 1rem; /* Bottom margin */
+}
+
+/* Contact form content blocks */
+.contact__content {
+  position: relative; /* For label positioning */
+  margin-bottom: 1.5rem; /* Bottom margin */
+}
+
+/* Contact form labels */
+.contact__label {
+  position: absolute; /* Absolute positioning */
+  top: -0.75rem; /* Above input */
+  left: 1rem; /* Left alignment */
+  font-size: var(--smaller-font-size); /* Small font size */
+  color: var(--first-color); /* Blue color */
+  background-color: var(--card-color); /* White background */
+  padding: 0 0.5rem; /* Horizontal padding */
+  font-weight: var(--font-medium); /* Medium weight */
+  z-index: 10; /* Above input */
+}
+
+/* Contact form inputs and textarea */
+.contact__input {
+  width: 100%; /* Full width */
+  background-color: var(--input-color); /* Light gray background */
+  color: var(--text-color); /* Medium gray text */
+  font-family: var(--body-font); /* Inter font */
+  font-size: var(--normal-font-size); /* Normal font size */
+  border: 2px solid transparent; /* Transparent border initially */
+  outline: none; /* Remove focus outline */
+  padding: 1rem; /* Internal padding */
+  border-radius: 0.75rem; /* Rounded corners */
+  transition: var(--transition); /* Smooth transitions */
+  resize: vertical; /* Allow vertical resize for textarea */
+}
+
+/* Input focus effect */
+.contact__input:focus {
+  border-color: var(--first-color); /* Blue border on focus */
+  background-color: var(--body-color); /* White background on focus */
+}
+
+/* Contact form submit button */
+.contact__button {
+  justify-self: flex-start; /* Align to start */
+  margin-top: var(--mb-1); /* Top margin */
+}
+
+/*===== FOOTER =====*/
+/* Footer section styling */
+.footer {
+  background: linear-gradient(135deg, var(--title-color), #111827); /* Dark gradient background */
+  padding: 3rem 0 2rem; /* Top and bottom padding */
+  color: #FFFFFF; /* White text */
+}
+
+/* Footer content container */
+.footer__content {
+  text-align: center; /* Center alignment */
+  margin-bottom: var(--mb-2); /* Bottom margin */
+}
+
+/* Footer title/name */
+.footer__title {
+  font-size: var(--h1-font-size); /* H1 font size */
+  color: #FFFFFF; /* White color */
+  margin-bottom: var(--mb-0-5); /* Bottom margin */
+  font-weight: var(--font-bold); /* Bold weight */
+}
+
+/* Footer subtitle/role */
+.footer__subtitle {
+  color: var(--first-color-light); /* Light blue color */
+  font-size: var(--normal-font-size); /* Normal font size */
+  margin-bottom: var(--mb-1-5); /* Bottom margin */
+}
+
+/* Footer social links container */
+.footer__social {
+  display: flex; /* Flexbox layout */
+  justify-content: center; /* Center horizontally */
+  gap: 1.5rem; /* Space between links */
+  margin-bottom: var(--mb-2); /* Bottom margin */
+}
+
+/* Footer social links */
+.footer__social-link {
+  display: inline-flex; /* Inline flex for proper sizing */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  width: 2.5rem; /* Fixed width */
+  height: 2.5rem; /* Fixed height */
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  color: #FFFFFF; /* White icon */
+  border-radius: 50%; /* Circular shape */
+  font-size: 1.125rem; /* Larger icon */
+  transition: var(--transition); /* Smooth transitions */
+}
+
+/* Footer social link hover effect */
+.footer__social-link:hover {
+  background-color: var(--first-color); /* Blue background */
+  transform: translateY(-3px); /* Lift effect */
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5); /* Blue shadow */
+}
+
+/* Footer copyright text */
+.footer__copy {
+  font-size: var(--smaller-font-size); /* Small font size */
+  text-align: center; /* Center alignment */
+  color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Top border */
+  padding-top: var(--mb-1); /* Top padding */
+}
+
+/*===== SCROLL TO TOP =====*/
+/* Scroll to top button */
+.scrollup {
+  position: fixed; /* Fixed positioning */
+  right: 1rem; /* Right edge */
+  bottom: -20%; /* Hidden below viewport initially */
+  background-color: var(--first-color); /* Blue background */
+  opacity: 0.8; /* Semi-transparent */
+  padding: 0.3rem; /* Small padding */
+  border-radius: 0.4rem; /* Rounded corners */
+  z-index: var(--z-tooltip); /* High z-index */
+  transition: var(--transition); /* Smooth transitions */
+  width: 2.5rem; /* Fixed width */
+  height: 2.5rem; /* Fixed height */
+  display: flex; /* Flexbox for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+/* Scroll up button hover effect */
+.scrollup:hover {
+  background-color: var(--first-color-alt); /* Darker blue */
+  opacity: 1; /* Fully opaque */
+  transform: translateY(-2px); /* Slight lift */
+}
+
+/* Scroll up icon */
+.scrollup__icon {
+  font-size: 1rem; /* Icon size */
+  color: #FFFFFF; /* White color */
+}
+
+/* Show scroll button class */
+.show-scroll {
+  bottom: 5rem; /* Position above footer when shown */
+}
+
+/*===== SCROLL ANIMATIONS =====*/
+/* Animation class for scroll-triggered elements */
+.animate {
+  animation: slideInUp 0.8s ease-out forwards; /* Slide up animation */
+}
+
+/* Keyframes for slide up animation */
+@keyframes slideInUp {
+  from {
+    opacity: 0; /* Start transparent */
+    transform: translateY(50px); /* Start below */
+  }
+  to {
+    opacity: 1; /* End opaque */
+    transform: translateY(0); /* End at normal position */
+  }
+}
+
+/* Staggered animation delays for multiple elements */
+.animate:nth-child(1) { animation-delay: 0.1s; }
+.animate:nth-child(2) { animation-delay: 0.2s; }
+.animate:nth-child(3) { animation-delay: 0.3s; }
+.animate:nth-child(4) { animation-delay: 0.4s; }
+
+/*===== MEDIA QUERIES =====*/
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (max-width: 576px) {
+  /* Adjust container padding for small screens */
+  .container {
+    padding-left: 1rem; /* Smaller left padding */
+    padding-right: 1rem; /* Smaller right padding */
+  }
+  
+  /* Single column layout for home section */
+  .home__container {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 2rem; /* Reduced gap */
+    text-align: center; /* Center text */
+  }
+  
+  /* Remove padding from home content */
+  .home__content {
+    padding-right: 0; /* Remove right padding */
+    order: 2; /* Move content below image */
+  }
+  
+  /* Remove padding from home image */
+  .home__img {
+    padding-left: 0; /* Remove left padding */
+    order: 1; /* Move image above content */
+  }
+  
+  /* Smaller video container on mobile */
+  .home__video-container {
+    max-width: 280px; /* Smaller max width */
+  }
+  
+  /* Single column for about section */
+  .about__container {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 2rem; /* Reduced gap */
+    text-align: center; /* Center text */
+  }
+  
+  /* Remove left padding from about data */
+  .about__data {
+    padding-left: 0; /* Remove left padding */
+  }
+  
+  /* Stack about info items vertically */
+  .about__info {
+    flex-direction: column; /* Vertical layout */
+    gap: 1rem; /* Reduced gap */
+  }
+  
+  /* Smaller about image */
+  .about__img-placeholder {
+    width: 180px; /* Smaller width */
+    height: 180px; /* Smaller height */
+    font-size: 3rem; /* Smaller icon */
+  }
+  
+  /* Single column for skills */
+  .skills__container {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 2rem; /* Reduced gap */
+  }
+  
+  /* Single column for skills list */
+  .skills__list {
+    grid-template-columns: 1fr; /* Single column */
+  }
+  
+  /* Single column for contact */
+  .contact__container {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 2rem; /* Reduced gap */
+  }
+  
+  /* Remove right padding from contact content */
+  .contact__content {
+    padding-right: 0; /* Remove right padding */
+  }
+  
+  /* Single column for contact form inputs */
+  .contact__inputs {
+    grid-template-columns: 1fr; /* Single column */
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (max-width: 768px) {
+  /* Show mobile navigation toggle */
+  .nav__toggle {
+    display: block; /* Show toggle button */
+  }
+  
+  /* Hide desktop navigation menu by default */
+  .nav__menu {
+    position: fixed; /* Fixed positioning */
+    left: -100%; /* Hidden off-screen initially */
+    top: var(--header-height); /* Below header */
+    width: 100%; /* Full width */
+    background-color: var(--body-color); /* White background */
+    padding: 2rem 0; /* Vertical padding */
+    border-top: 1px solid var(--shadow-color); /* Top border */
+    transition: var(--transition); /* Smooth slide transition */
+    flex-direction: column; /* Vertical layout */
+    gap: 1rem; /* Space between items */
+    box-shadow: 0 4px 12px var(--shadow-color); /* Shadow */
+  }
+  
+  /* Show mobile menu class */
+  .show-menu {
+    left: 0; /* Slide in from left */
+  }
+  
+  /* Mobile navigation items */
+  .nav__item {
+    text-align: center; /* Center text */
+    padding: 0.5rem 2rem; /* Padding for touch targets */
+  }
+  
+  /* Larger touch targets for mobile */
+  .nav__link {
+    font-size: var(--normal-font-size); /* Larger font for mobile */
+    padding: 1rem 0; /* Vertical padding for larger touch area */
+  }
+  
+  /* Mobile CTA button styling */
+  .nav__cta {
+    margin: 1rem 2rem; /* Margin for spacing */
+    padding: 1rem; /* Larger padding */
+    text-align: center; /* Center text */
+    border-radius: 0.5rem; /* More rounded */
+  }
+  
+  /* Reduce home section top padding */
+  .home {
+    padding-top: calc(var(--header-height) + 2rem); /* Less top padding */
+  }
+  
+  /* Single column layout for medium screens */
+  .home__container,
+  .about__container,
+  .contact__container {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 2rem; /* Consistent gap */
+  }
+  
+  /* Center content and remove padding */
+  .home__content,
+  .about__data,
+  .contact__content {
+    padding-right: 0; /* Remove right padding */
+    text-align: center; /* Center text */
+  }
+  
+  /* Center images and remove padding */
+  .home__img {
+    padding-left: 0; /* Remove left padding */
+    justify-content: center; /* Center content */
+  }
+  
+  /* Responsive grid for portfolio */
+  .portfolio__container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 1.5rem; /* Smaller gap */
+  }
+  
+  /* Two column skills layout on medium screens */
+  .skills__container {
+    grid-template-columns: 1fr; /* Single column for simplicity */
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+  /* Larger container for desktop */
+  .container {
+    margin-left: auto; /* Center container */
+    margin-right: auto; /* Center container */
+    padding-left: 2rem; /* More padding */
+    padding-right: 2rem; /* More padding */
+  }
+  
+  /* More padding for navigation on desktop */
+  .nav {
+    padding-left: 2rem; /* More left padding */
+    padding-right: 2rem; /* More right padding */
+  }
+  
+  /* More section padding on desktop */
+  .section {
+    padding: 6rem 0 4rem; /* More vertical padding */
+  }
+  
+  /* Larger home container gap */
+  .home__container {
+    gap: 4rem; /* Larger gap between columns */
+  }
+  
+  /* More padding for home content */
+  .home__content {
+    padding-right: 3rem; /* More right padding */
+  }
+  
+  /* More padding for home image */
+  .home__img {
+    padding-left: 3rem; /* More left padding */
+  }
+  
+  /* Larger video container */
+  .home__video-container {
+    max-width: 500px; /* Larger max width */
+  }
+  
+  /* Larger about container gap */
+  .about__container {
+    gap: 5rem; /* Larger gap */
+  }
+  
+  /* More padding for about data */
+  .about__data {
+    padding-left: 3rem; /* More left padding */
+  }
+  
+  /* Larger about image */
+  .about__img-placeholder {
+    width: 300px; /* Larger width */
+    height: 300px; /* Larger height */
+    font-size: 5rem; /* Larger icon */
+  }
+  
+  /* Three column portfolio grid */
+  .portfolio__container {
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 2.5rem; /* Larger gap */
+  }
+  
+  /* Larger contact container gap */
+  .contact__container {
+    gap: 5rem; /* Larger gap */
+  }
+  
+  /* More padding for contact content */
+  .contact__content {
+    padding-right: 3rem; /* More right padding */
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
+  /* Even larger container */
+  .container {
+    max-width: 1140px; /* Max width for very large screens */
+    padding-left: 1rem; /* Standard padding */
+    padding-right: 1rem; /* Standard padding */
+  }
+  
+  /* Larger home title */
+  .home__title {
+    font-size: 3rem; /* Larger title font */
+  }
+  
+  /* Larger home subtitle */
+  .home__subtitle {
+    font-size: 1.75rem; /* Larger subtitle */
+  }
+  
+  /* Larger home description */
+  .home__description {
+    font-size: 1.125rem; /* Larger description text */
+    margin-bottom: var(--mb-3); /* More bottom margin */
+  }
+  
+  /* Larger social icons */
+  .home__social-icon {
+    width: 3.5rem; /* Larger width */
+    height: 3.5rem; /* Larger height */
+    font-size: 1.5rem; /* Larger icon */
+  }
+  
+  /* Maximum video container size */
+  .home__video-container {
+    max-width: 600px; /* Even larger max width */
+  }
+}

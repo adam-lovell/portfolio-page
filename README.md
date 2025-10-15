@@ -19,6 +19,7 @@ Built using clean, semantic HTML5, modern CSS3, and vanilla JavaScript. The site
 
 ## Connect With Me
 
+- **Site Link**: https://adam-lovell.github.io/portfolio-page/
 - **GitHub**: [github.com/adam-lovell](https://github.com/adam-lovell)
 - **LinkedIn**: [linkedin.com/in/adam-lovell-076503161](https://www.linkedin.com/in/adam-lovell-076503161/)
 - **Contra**: [contra.com/adam_lovell_knjybkke](https://contra.com/adam_lovell_knjybkke?r=adam_lovell_knjybkke)
